@@ -16,17 +16,17 @@ import javax.persistence.EntityManagerFactory;
 import javax.sql.DataSource;
 import java.util.Properties;
 
-//@Configuration
-//@PropertySource(value = {"classpath:hibernate.properties"})
-//@EnableJpaRepositories(basePackages = "com.wmusial.dao")
+@Configuration
+@PropertySource(value = {"classpath:hibernate.properties"})
+@EnableJpaRepositories(basePackages = "com.wmusial.dao")
 public class HibernateConfig {
 
-//    @Autowired
+    @Autowired
     private Environment environment;
 
-    // 1. DataSource
+    // 1. Utworzenie DataSource
 
-//    @Bean
+    @Bean
     public DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName(environment.getRequiredProperty("jdbc.driver.class.name"));
@@ -39,7 +39,7 @@ public class HibernateConfig {
 
     // 2. EntityManagerFactory
 
-//    @Bean
+    @Bean
     public EntityManagerFactory entityManagerFactory() {
 
         HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
@@ -60,8 +60,8 @@ public class HibernateConfig {
         return factoryBean.getObject();
     }
 
-    // 3. PlatformTransactionManager
-//    @Bean
+//     3. PlatformTransactionManager
+    @Bean
     public PlatformTransactionManager transactionManager() {
         JpaTransactionManager transactionManager = new JpaTransactionManager();
         transactionManager.setEntityManagerFactory(entityManagerFactory());

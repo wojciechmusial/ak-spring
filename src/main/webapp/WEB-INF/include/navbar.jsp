@@ -1,5 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<c:url value="/users" var="usersURL"/>
+<c:url value="/create-user" var="createUserURL"/>
+
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -18,9 +21,9 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Users <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">New...</a></li>
+                        <li><a href="${createUserURL}">New...</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="">Show all</a></li>
+                        <li><a href="${usersURL}">Show all</a></li>
                     </ul>
                 </li>
 

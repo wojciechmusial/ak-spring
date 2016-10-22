@@ -26,4 +26,7 @@ public class AppConfig extends WebMvcConfigurerAdapter {
         viewResolver.setSuffix(".jsp");
         return viewResolver;
     }
+
+    // 1. view resolver dostaje np "users" z controllera
+    // 2. dokleja prefix i suffix = /WEB-INF/users.jsp
 }
