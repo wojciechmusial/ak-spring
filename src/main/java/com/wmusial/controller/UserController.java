@@ -35,34 +35,51 @@ public class UserController {
         return "user-create";
     }
 
-//    @RequestMapping(value = "/create-user", method = RequestMethod.POST)
-//    public String saveUser(@RequestParam(name = "firstName", required = true) String firstName,
-//                           @RequestParam String lastName,
-//                           @RequestParam String email,
-//                           @RequestParam String password) {
-//
-//        User user = new User(firstName, lastName, email, password);
-//
-//        userDao.save(user);
-//
-//        return "redirect:/users";
-//    }
-
     @RequestMapping(value = "/create-user", method = RequestMethod.POST)
-    public String saveUser(@ModelAttribute User user) {
+    public String saveUser(@RequestParam(required = false) Long id,
+                           @RequestParam(name = "firstName", required = true) String firstName,
+                           @RequestParam String lastName,
+                           @RequestParam String email,
+                           @RequestParam String password) {
 
-//        User user = new User(firstName, lastName, email, password);
+        User user = new User(firstName, lastName, email, password);
+        user.setId(id);
 
         userDao.save(user);
 
         return "redirect:/users";
     }
 
-    @RequestMapping(value = "/users/delete/{id}", method = RequestMethod.GET)
+//    @RequestMapping(value = "/create-user", method = RequestMethod.POST)
+//    public String saveUser(@ModelAttribute User user) {
+//
+////        User user = new User(firstName, lastName, email, password);
+//
+//        userDao.save(user);
+//
+//        return "redirect:/users";
+//    }
+
+    @RequestMapping(value = "/users/delete/{id}", method = RequestMethod.POST)
     public String deleteUser(@PathVariable Long id) {
 
         userDao.delete(id);
 
         return "redirect:/users";
     }
+
+
+    @RequestMapping(value = "/users/edit/{id}", method = RequestMethod.GET)
+    public String getUserEditPage(@PathVariable Long id, Model model) {
+
+        User user = userDao.findOne(id);
+
+        model.addAttribute("user", user);
+
+        return "user-create";
+    }
+
+
+
+
 }

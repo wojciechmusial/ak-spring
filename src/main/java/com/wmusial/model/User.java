@@ -1,10 +1,24 @@
 package com.wmusial.model;
 
+import com.wmusial.api.UserDto;
+
 import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
 public class User {
+
+    public User(UserDto userDto) {
+        id = userDto.getId();
+        email = userDto.getEmail();
+        firstName = userDto.getFirstName();
+        lastName = userDto.getLastName();
+        password = "1234";
+    }
+
+    public enum Role {
+        USER, ADMIN
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,6 +35,10 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "role", nullable = false)
+    private Role role = Role.USER;
 
     public User() {
     }
@@ -70,5 +88,13 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
+    public void setRole(Role role) {
+        this.role = role;
     }
 }
