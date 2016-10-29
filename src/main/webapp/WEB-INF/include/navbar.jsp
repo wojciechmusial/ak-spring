@@ -5,6 +5,9 @@
 <c:url value="/create-user" var="createUserURL"/>
 <c:url value="/logout" var="logoutURL"/>
 
+<c:url var="booksUrl" value="/books"/>
+<c:url var="createBookUrl" value="/book/create"/>
+
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -31,12 +34,12 @@
                 </li>
                 </sec:authorize>
 
-                <li class="dropdown">
+                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Books <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="">New...</a></li>
+                        <li><a href="${createBookUrl}">New...</a></li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="">Show all</a></li>
+                        <li><a href="${booksUrl}">Show all</a></li>
                     </ul>
                 </li>
                 <li><a href="">My rents</a></li>
