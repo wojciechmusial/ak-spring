@@ -1,6 +1,7 @@
 package com.wmusial.model;
 
 import com.wmusial.api.UserDto;
+import org.hibernate.validator.constraints.Email;
 
 import javax.persistence.*;
 
@@ -31,6 +32,7 @@ public class User {
     private String lastName;
 
     @Column(nullable = false, unique = true)
+    @Email
     private String email;
 
     @Column(nullable = false)
