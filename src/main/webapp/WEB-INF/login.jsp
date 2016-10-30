@@ -2,6 +2,7 @@
 <%@ include file="/WEB-INF/include/header.jsp" %>
 
 <c:url value="/login" var="loginURL"/>
+<c:url value="/register" var="registerURL"/>
 
 <div class="container">
 
@@ -39,7 +40,7 @@
             <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
         </form>
         <div class="margin-bottom-10">
-            Don't have account? <a href="" class="register">Create account</a>
+            Don't have account? <a href="${registerURL}" class="register">Create account</a>
         </div>
     </div>
 </div>

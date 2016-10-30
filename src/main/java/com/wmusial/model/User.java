@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class User extends BaseEntity {
 
     public User(UserDto userDto) {
         id = userDto.getId();
@@ -20,10 +20,6 @@ public class User {
     public enum Role {
         USER, ADMIN
     }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
     @Column(name = "first_name", nullable = false, length = 455)
     private String firstName;
@@ -50,14 +46,6 @@ public class User {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {

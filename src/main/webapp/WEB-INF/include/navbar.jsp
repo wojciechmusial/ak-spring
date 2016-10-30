@@ -8,6 +8,8 @@
 <c:url var="booksUrl" value="/books"/>
 <c:url var="createBookUrl" value="/book/create"/>
 
+<c:url var="rentsUrl" value="/rents"/>
+
 <nav class="navbar navbar-inverse">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -42,7 +44,7 @@
                         <li><a href="${booksUrl}">Show all</a></li>
                     </ul>
                 </li>
-                <li><a href="">My rents</a></li>
+                <li><a href="${rentsUrl}">My rents</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">

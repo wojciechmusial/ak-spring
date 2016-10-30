@@ -9,11 +9,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "book")
-public class Book {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class Book extends BaseEntity {
 
     @NotNull
     @Size(min = 3, max = 255, message = "Podaj dlugosc od {min} do {max}")
@@ -33,14 +29,6 @@ public class Book {
         this.author = author;
         this.title = title;
         this.available = available;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getAuthor() {
@@ -65,5 +53,9 @@ public class Book {
 
     public void setAvailable(Integer available) {
         this.available = available;
+    }
+
+    public void decrementQuantity() {
+        available--;
     }
 }
